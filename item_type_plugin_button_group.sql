@@ -5,18 +5,18 @@ whenever sqlerror exit sql.sqlcode rollback
 -- ORACLE Application Express (APEX) export file
 --
 -- You should run the script connected to SQL*Plus as the Oracle user
--- APEX_050000 or as the owner (parsing schema) of the application.
+-- APEX_050100 or as the owner (parsing schema) of the application.
 --
 -- NOTE: Calls to apex_application_install override the defaults below.
 --
 --------------------------------------------------------------------------------
 begin
 wwv_flow_api.import_begin (
- p_version_yyyy_mm_dd=>'2013.01.01'
-,p_release=>'5.0.2.00.07'
-,p_default_workspace_id=>999999
-,p_default_application_id=>100
-,p_default_owner=>'PLAYGROUND'
+ p_version_yyyy_mm_dd=>'2016.08.24'
+,p_release=>'5.1.0.00.45'
+,p_default_workspace_id=>32277608392798782956
+,p_default_application_id=>101959
+,p_default_owner=>'ISABOLIC'
 );
 end;
 /
@@ -28,35 +28,23 @@ end;
 prompt --application/shared_components/plugins/item_type/button_group
 begin
 wwv_flow_api.create_plugin(
- p_id=>wwv_flow_api.id(10294137469304400)
+ p_id=>wwv_flow_api.id(2834566936131126935)
 ,p_plugin_type=>'ITEM TYPE'
 ,p_name=>'BUTTON.GROUP'
 ,p_display_name=>'buttonGroup'
 ,p_supported_ui_types=>'DESKTOP:JQM_SMARTPHONE'
-,p_javascript_file_urls=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
-'http://playground/ws/button.group.js',
-'http://playground/ws/libs/handlebars-v4.0.5.js',
-'http://playground/ws/libs/opentip-2.4.6/opentip.js',
-'http://playground/ws/libs/opentip-2.4.6/adapter-jquery.js'))
-,p_css_file_urls=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
-'http://playground/ws/button.group.css',
-'http://playground/ws/libs/opentip-2.4.6/opentip.css'))
+,p_supported_component_types=>'APEX_APPLICATION_PAGE_ITEMS'
+,p_api_version=>1
 ,p_render_function=>'ax_plg_btn_group_pkg.button_group'
-,p_standard_attributes=>'VISIBLE:FORM_ELEMENT:SESSION_STATE:QUICKPICK:SOURCE:ELEMENT:ELEMENT_OPTION:LOV:LOV_REQUIRED'
-,p_sql_min_column_count=>2
-,p_sql_max_column_count=>3
-,p_sql_examples=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
-'select 1 as dv, ''Test 1'' as rv, ''fa-times'' as icon from dual',
-'union all',
-'select 2 as dv, ''Test 2'' as rv, ''fa-times'' as icon from dual '))
+,p_standard_attributes=>'VISIBLE:FORM_ELEMENT:SESSION_STATE:QUICKPICK:SOURCE:ELEMENT:ELEMENT_OPTION:LOV'
 ,p_substitute_attributes=>true
 ,p_subscribe_plugin_settings=>true
 ,p_version_identifier=>'1.0.0'
 ,p_files_version=>8
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(10328587098563847)
-,p_plugin_id=>wwv_flow_api.id(10294137469304400)
+ p_id=>wwv_flow_api.id(2834601385760386382)
+,p_plugin_id=>wwv_flow_api.id(2834566936131126935)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>10
@@ -69,8 +57,8 @@ wwv_flow_api.create_plugin_attribute(
 ,p_help_text=>'Show only icons text will be render as tooltip, this only works if type of LOV is "Sql query"'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(10346689871560494)
-,p_plugin_id=>wwv_flow_api.id(10294137469304400)
+ p_id=>wwv_flow_api.id(2834619488533383029)
+,p_plugin_id=>wwv_flow_api.id(2834566936131126935)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>20
@@ -80,6 +68,17 @@ wwv_flow_api.create_plugin_attribute(
 ,p_default_value=>'N'
 ,p_supported_ui_types=>'DESKTOP:JQM_SMARTPHONE'
 ,p_is_translatable=>false
+);
+wwv_flow_api.create_plugin_std_attribute(
+ p_id=>wwv_flow_api.id(2824272942955822865)
+,p_plugin_id=>wwv_flow_api.id(2834566936131126935)
+,p_name=>'LOV'
+,p_sql_min_column_count=>2
+,p_sql_max_column_count=>3
+,p_examples=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select 1 as dv, ''Test 1'' as rv, ''fa-times'' as icon from dual',
+'union all',
+'select 2 as dv, ''Test 2'' as rv, ''fa-times'' as icon from dual '))
 );
 end;
 /
@@ -1690,8 +1689,8 @@ end;
 /
 begin
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(10294422883406876)
-,p_plugin_id=>wwv_flow_api.id(10294137469304400)
+ p_id=>wwv_flow_api.id(2834567221545229411)
+,p_plugin_id=>wwv_flow_api.id(2834566936131126935)
 ,p_file_name=>'handlebars-v4.0.5.js'
 ,p_mime_type=>'text/javascript'
 ,p_file_charset=>'utf-8'
@@ -2263,8 +2262,8 @@ end;
 /
 begin
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(10352282899170925)
-,p_plugin_id=>wwv_flow_api.id(10294137469304400)
+ p_id=>wwv_flow_api.id(2834625081560993460)
+,p_plugin_id=>wwv_flow_api.id(2834566936131126935)
 ,p_file_name=>'opentip.js'
 ,p_mime_type=>'text/javascript'
 ,p_file_charset=>'utf-8'
@@ -2326,8 +2325,8 @@ end;
 /
 begin
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(10352682934171718)
-,p_plugin_id=>wwv_flow_api.id(10294137469304400)
+ p_id=>wwv_flow_api.id(2834625481595994253)
+,p_plugin_id=>wwv_flow_api.id(2834566936131126935)
 ,p_file_name=>'adapter-jquery.js'
 ,p_mime_type=>'text/javascript'
 ,p_file_charset=>'utf-8'
@@ -2432,8 +2431,8 @@ end;
 /
 begin
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(10353071408195574)
-,p_plugin_id=>wwv_flow_api.id(10294137469304400)
+ p_id=>wwv_flow_api.id(2834625870070018109)
+,p_plugin_id=>wwv_flow_api.id(2834566936131126935)
 ,p_file_name=>'opentip.css'
 ,p_mime_type=>'text/css'
 ,p_file_charset=>'utf-8'
@@ -2552,8 +2551,8 @@ end;
 /
 begin
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(10355084533648025)
-,p_plugin_id=>wwv_flow_api.id(10294137469304400)
+ p_id=>wwv_flow_api.id(2834627883195470560)
+,p_plugin_id=>wwv_flow_api.id(2834566936131126935)
 ,p_file_name=>'button.group.js'
 ,p_mime_type=>'text/javascript'
 ,p_file_charset=>'utf-8'
@@ -2595,8 +2594,8 @@ end;
 /
 begin
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(10355431940649198)
-,p_plugin_id=>wwv_flow_api.id(10294137469304400)
+ p_id=>wwv_flow_api.id(2834628230602471733)
+,p_plugin_id=>wwv_flow_api.id(2834566936131126935)
 ,p_file_name=>'button.group.css'
 ,p_mime_type=>'text/css'
 ,p_file_charset=>'utf-8'

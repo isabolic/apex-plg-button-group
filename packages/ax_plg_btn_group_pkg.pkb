@@ -86,12 +86,12 @@ as
                                        p_version        => NULL,
                                        p_skip_extension => FALSE);
 
-            apex_javascript.add_library(p_name          => 'opentip.js',
+            apex_javascript.add_library(p_name          => 'opentip',
                                        p_directory      =>  p_plugin.file_prefix,
                                        p_version        => NULL,
                                        p_skip_extension => FALSE);
 
-            apex_javascript.add_library(p_name          => 'adapter-jquery.js',
+            apex_javascript.add_library(p_name          => 'adapter-jquery',
                                        p_directory      =>  p_plugin.file_prefix,
                                        p_version        => NULL,
                                        p_skip_extension => FALSE);
