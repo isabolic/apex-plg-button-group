@@ -1,0 +1,113 @@
+.btn-group.plg[data-toggle=buttons]>.t-Button input[type=checkbox],
+.btn-group.plg[data-toggle=buttons]>.t-Button input[type=radio],
+.btn-group.plg[data-toggle=buttons]>.btn-group>.t-Button input[type=checkbox],
+.btn-group.plg[data-toggle=buttons]>.btn-group>.t-Button input[type=radio]{
+    position: absolute;
+    clip: rect(0,0,0,0);
+    pointer-events: none;
+}
+.btn-group.plg .t-Button{
+    border-radius: 5px;
+}
+.btn-group.plg>.t-Button:first-child:not(:last-child){
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.btn-group.plg>.t-Button:last-child:not(:first-child){
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+}
+.btn-group.plg>.t-Button:first-child {
+    margin-left: 0;
+}
+.btn-group.plg .t-Button+.t-Button{
+    margin-left: -1px;
+}
+.btn-group.plg>.t-Button:not(:first-child):not(:last-child){
+  border-radius: 0;
+}
+.btn-group.plg>.t-Button {
+    position: relative;
+    float: left;
+    border: 1px solid transparent;
+}
+
+.btn-group.plg>.t-Button .fa{
+    font-size: 17px;
+}
+.btn-group.plg>.t-Button.active{
+    box-shadow: inset 3em 3em rgba(0, 0, 0, 0.50);
+    /*background-color: #286090;*/
+}
+
+.t-Form-fieldContainer--xlarge .btn-group.plg>.t-Button{
+    font-size: 1.6rem;
+    padding: .9rem;
+    height: 4rem;
+    line-height: 1.25;
+}
+.t-Form-fieldContainer--large .btn-group.plg>.t-Button{
+    font-size: 1.4rem;
+    padding: .7rem;
+    height: 3.7rem;
+    line-height: 1.5;
+}
+
+.btn-group.plg>.t-Button:hover{
+    box-shadow: none;
+}
+.btn-group.plg>.t-Button.active:hover{
+    box-shadow: inset 3em 3em rgba(0, 0, 0, 0.50) !Important;
+}
+.btn-group.plg.full-width{
+    width: 100%;
+}
+.btn-group.plg.fixed-width{
+    width: 200px;
+}
+.btn-group.plg>.t-Button{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.btn-group.plg>.t-Button.vertical-align{
+    width: 100%;
+    border-radius: 5px !important;
+    margin-left: 0px;
+}
+
+@media only screen and (max-width: 640px){
+  .btn-group.plg>label.t-Button {
+    width: 100% !important;
+    border-radius: 0px;
+    float: none;
+    display: block;
+  }
+  .btn-group.plg {
+    width: 100%;
+  }
+  .btn-group-label.t-Form-labelContainer{
+    line-height: initial !important;
+  }
+  .btn-group.plg .t-Button+.t-Button{
+    margin-left:auto;
+  }
+}
