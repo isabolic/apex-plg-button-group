@@ -77,6 +77,11 @@
      * @param  {$.event} [jquery event]
      */
     var toggleActiveBtn = function(e){
+
+      if ($(e.target).is("input") === true){
+        return;
+      }
+
         this.container
             .find(".t-Button")
             .removeClass("active");
