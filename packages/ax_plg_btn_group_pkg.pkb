@@ -156,6 +156,15 @@ as
         else
             apex_json.write('showOnlyIcons', false);
         end if;
+
+        if p_item.element_css_classes is not null then
+            apex_json.write('elementCssClasses', p_item.element_css_classes);
+        end if;
+
+        if p_item.element_attributes is not null then
+            apex_json.write('elementAttributes', p_item.element_attributes);
+        end if;
+
         if v_btn_vert = 'Y' then
             apex_json.write('verticalAlignBtn', true);
         else

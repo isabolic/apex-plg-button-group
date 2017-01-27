@@ -13,9 +13,12 @@
 (function($, x) {
     var options = {
         $itemId          : null,
-        config           : {  showOnlyIcons:false,
-                              verticalAlignBtn:false,
-                              data : []
+        config           : {
+                              showOnlyIcons    : false,
+                              verticalAlignBtn : false,
+                              data             : [],
+                              elementAttributes: null,
+                              elementCssClasses: null
                             },
         htmlTemplate     : {
             item :  '<div class="btn-group plg" data-toggle="buttons" id="cont-{{name}}">'                                                          +
@@ -65,13 +68,13 @@
      */
     var triggerEvent = function(evt, evtData) {
         xDebug.call(this, arguments.callee.name, arguments);
-        this.options.$itemValId.trigger(evt, [evtData]);
+        this.options.$itemId.trigger(evt, [evtData]);
         $(this).trigger(evt + "." + this.apexname, [evtData]);
     };
 
     /**
      * [toggleActiveBtn toggle active class and set apex item hidden value]
-     * @param  {[type]} e [description]
+     * @param  {$.event} [jquery event]
      */
     var toggleActiveBtn = function(e){
         this.container
@@ -93,7 +96,35 @@
                  .find("input[type='radio']")
                  .val()
             );
-    }
+
+        triggerEvent.call(this, this.events[0], {event : e, _this : this});
+    };
+
+    /**
+     * [applyOptions set custom class, set element attr]
+     */
+    var applyOptions = function(){
+      var arAttr;
+
+      if (this.options.config.elementCssClasses) {
+        this.container
+            .addClass(this.options.config.elementCssClasses);
+      }
+
+      if (this.options.config.elementAttributes &&
+          this.options.config.elementAttributes.indexOf("=") > -1) {
+
+        arAttr = this.options.config.elementAttributes.split("=");
+
+        arAttr = $.map(arAttr, function(str){
+          return str.replace(new RegExp(/'/g), "").replace(new RegExp(/"/g), "");
+        });
+
+        this.container
+            .attr(arAttr[0], arAttr[1]);
+      }
+    };
+
     /**
      * [setTooltip - PRIVATE set tooltip on button fix text is too long or option showOnlyIcons is true]
      */
@@ -109,7 +140,7 @@
                           new Opentip(
                             $(el),
                             $(el).attr("ot-title"),
-                            { style: "dark", delay:0.5 }
+                            { style: "win", delay:0.5 }
                           );
 
                         }
@@ -131,7 +162,7 @@
                           new Opentip(
                             $(el),
                             $(el).attr("ot-title"),
-                            {style: "dark", delay: 0.5}
+                            {style: "win", delay: 0.5}
                           )
                         }
 
@@ -142,7 +173,8 @@
 
                      }.bind(this));
       }
-    }
+    };
+
     /**
      * [setInitValue - PRIVATE set inital value (active button)]
      */
@@ -157,7 +189,7 @@
             input.closest(".t-Button").addClass("active");
             this.options.$itemId.val(val);
         }
-    }
+    };
 
     /**
      * [stretchItem - PRIVATE stretch item to full width of column model]
@@ -195,7 +227,7 @@
             this.container.addClass("fixed-width");
           }
       }
-    }
+    };
 
     /**
      * [setLineHeight - PRIVATE set label line height]
@@ -213,15 +245,23 @@
         labelEl.closest(".t-Form-labelContainer")
                .addClass("btn-group-label");
       }
-    }
+    };
 
     apex.plugins.buttonGroup = function(opts) {
         this.apexname = "BUTTON.GROUP";
         this.jsName = "apex.plugins.buttonGroup";
         this.container = null;
         this.options = {};
-        this.events = [];
+        this.events = ["buttongroup-value-change"];
         this.tooltips = [];
+        this.openTipStyle = {
+            borderColor : "rgba(56, 151, 253, 0.81)",
+            shadow      : false,
+            extends     :"dark",
+            borderRadius: 0,
+            stem        : null,
+            background  : "rgba(56, 151, 253, 0.91)"
+        };
         this.init = function() {
             var itemTemplate, len;
 
@@ -234,6 +274,8 @@
             if ($.isFunction(Opentip) === undefined){
               throw this.jsName || ": requires opentip (http://www.opentip.org/)";
             }
+
+            Opentip.styles.win = this.openTipStyle;
 
             if ($.isPlainObject(opts)) {
                 this.options = $.extend(true, {}, this.options, options, opts);
@@ -269,6 +311,8 @@
 
             setTooltip.call(this);
 
+            applyOptions.call(this);
+
             $(window).resize(setTooltip.bind(this));
 
             return this;
@@ -277,9 +321,7 @@
         return this.init();
     };
 
-    apex.plugins.buttonGroup.prototype = {
-
-    };
+    apex.plugins.buttonGroup.prototype = {};
 
 
 $.fn.isMobile = function() {
