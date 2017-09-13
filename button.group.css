@@ -1,3 +1,13 @@
+/**
+ *
+ * Plugin : Button group
+ * Version: 1.0.0
+ *
+ * Author : isabolic
+ * Mail   : sabolic.ivan@gmail.com
+ * Twitter: @isabolic99
+ */
+
 .btn-group.plg[data-toggle=buttons]>.t-Button input[type=checkbox],
 .btn-group.plg[data-toggle=buttons]>.t-Button input[type=radio],
 .btn-group.plg[data-toggle=buttons]>.btn-group>.t-Button input[type=checkbox],

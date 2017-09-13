@@ -1,5 +1,11 @@
 /**
- * [created by isabolic sabolic.ivan@gmail.com]
+ *
+ * Plugin : Button group
+ * Version: 1.0.0
+ *
+ * Author : isabolic
+ * Mail   : sabolic.ivan@gmail.com
+ * Twitter: @isabolic99
  */
 
 
